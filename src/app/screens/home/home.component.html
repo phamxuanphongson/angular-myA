@@ -1,0 +1,17 @@
+<div class="list-artists container-fluid">
+    <div class="row">
+        <div class="col-11 mx-auto mt-5">
+            <div *ngIf="AllArtists != undefined" class="row">
+                <div *ngFor="let artist of AllArtists" class="col-3 text-center">
+                    <a routerLink="/artists/{{artist.id}}/songs">
+                        <img [ngStyle]="{'background': 'url('+ artist.avatar +') 50% 50% no-repeat'}" class="artist-thumb rounded" alt="">
+                    </a>
+                    <h3 class="mt-2">
+                        <a routerLink="/artists/{{artist.id}}/songs">{{artist.name}}</a>
+                    </h3>
+                    <p>{{artist.bio}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

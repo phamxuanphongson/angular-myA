@@ -1,0 +1,29 @@
+<div class="list-artists container-fluid">
+  <div class="row">
+      <div class="col-8 mx-auto mt-5">
+          <div class="row">
+            <div class="col-5 text-center">
+              <a>
+                <!-- <i class="fas fa-music"></i> -->
+                <img [ngStyle]="{'background-image': 'url(' + theArtist.avatar + ')'}" class=" d-block mx-auto artist-thumb-detail rounded" alt="">
+              </a>
+              <h1 class="mt-3 mb-3">{{theArtist.name}}</h1>
+              <p>{{theArtist.bio}}</p>
+            </div>
+            <div class="col-7">
+              <ul *ngIf="AllSongFromArtist != undefined" class="list-unstyled list-group list-group-flush">
+                <li *ngFor="let song of AllSongFromArtist" class="list-group-item">
+                  <h3>
+                    <fa name="music"></fa>
+                    <a routerLink="/artists/{{theArtist.id}}/songs/{{song.id}}" class="pl-3">
+                      {{song.title}}
+                    </a>
+                    <span class="float-right" style="font-size: 1.3rem ; font-weight: 200">00:00</span>
+                  </h3>
+                </li>
+              </ul>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
