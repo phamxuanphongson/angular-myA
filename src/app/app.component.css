@@ -16,7 +16,22 @@ header.container-fluid .row{
 }
 .loadingText{
     position: fixed;
-    bottom: 0;
+    bottom: -25%;
+    transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.wait-on{
+    bottom: 0%;
+}
+.wait-off{
+    transition: 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    bottom: -25%;
+}
+.loadingText h1{
+    border-radius: 10px;
+    border: 1px solid grey;
+    box-shadow: 0px 5px 10px 1px rgba(0,0,0,0.75);
+    padding: 15px;
+    background: white;
 }
 .control-btn>button:hover{
     background-color: black;

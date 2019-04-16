@@ -2,7 +2,10 @@ function getTheAudio(){
     var audioTag = document.querySelector('#audio');
     var durationTag = document.querySelector('.theDuration>p');
     var progressBar = document.querySelector('#seekbar');
-    var loadingText ;
+    window.onload = function(){
+        var loadingText = document.querySelector('.loadingText');
+        loadingText.classList.add('wait-on');
+    }
     audioTag.onloadedmetadata = function(){
         var minutes = parseInt(audioTag.duration / 60, 10);
         var seconds = parseInt(audioTag.duration % 60);
@@ -10,7 +13,9 @@ function getTheAudio(){
         durationTag.innerHTML = theDuration;
         var progressBar = document.querySelector('#seekbar');
         var currentTimeTag = document.querySelector('.currentTimeTag');
+        var loadingText = document.querySelector('.loadingText').classList.add('wait-off');
         var songBox = document.querySelector('.songs-box').classList.add('player-on');
+        // loadingText.classList.remove('wait-on');
         audioTag.ontimeupdate = function(){
             var percent = parseInt(parseInt(audioTag.currentTime)*100/parseInt(audioTag.duration));
             progressBar.setAttribute("style", 'width:'+percent+'%');  

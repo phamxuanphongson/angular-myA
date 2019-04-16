@@ -84,7 +84,7 @@ export class SongComponent implements OnInit{
     }
     // this.share.turnOnPlayer(this.turnOnStr);
     getTheAudio();
-    this.share.turnOnPlayer(this.turnOnStr);
+    
 
   }
   
