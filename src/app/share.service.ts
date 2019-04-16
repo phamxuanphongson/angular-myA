@@ -7,10 +7,10 @@ import {BehaviorSubject} from 'rxjs';
 export class ShareService {
   private linkS = new BehaviorSubject<string>('');
   private durationTime = new BehaviorSubject<string>('');
-  private turnOn = new BehaviorSubject<string>('');
+  private allSongFromArtist = new BehaviorSubject<any>([]);
   currentLink = this.linkS.asObservable();
   currentDuration = this.durationTime.asObservable();
-  currentTurnOn = this.turnOn.asObservable();
+  currentAllSongFromArtis = this.allSongFromArtist.asObservable();
   constructor() { }
 
   changeLink(link: string){
@@ -21,7 +21,7 @@ export class ShareService {
     this.durationTime.next(duration);
   }
 
-  turnOnPlayer(turnOnStr: string){
-    this.turnOn.next(turnOnStr);
+  changeAllSongFromArtist(obj: any){
+    this.allSongFromArtist.next(obj);
   }
 }

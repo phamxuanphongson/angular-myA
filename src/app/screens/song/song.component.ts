@@ -16,6 +16,7 @@ declare var getTheAudio: any;
   styleUrls: ['./song.component.css']
 })
 export class SongComponent implements OnInit{
+  allSongFromArtist: Songs[];
   closeResult: string;
   AllArtists: Artists[];
   randomNum: any[] = [];
@@ -78,6 +79,10 @@ export class SongComponent implements OnInit{
       this.AllArtists = info;
     });
 
+    this.songsService.getAllSongFromArtist(this.artistID).subscribe((listSongs) => {
+      this.share.changeAllSongFromArtist(listSongs);
+    });
+
     this.randomNum = this.songsService.randomArrMinMax(6,0,20);
     if(this.randomNum.length>6){
       this.randomNum.splice(6,6);
@@ -87,6 +92,8 @@ export class SongComponent implements OnInit{
     
 
   }
+
+  
   
 }
 

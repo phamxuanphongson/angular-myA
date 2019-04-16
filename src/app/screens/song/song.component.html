@@ -22,7 +22,7 @@
       </div>
   </div>
 </div>
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 120px;">
   <div class="row">
     <div class="col-10 mx-auto">
       <div *ngIf="AllArtists != undefined && randomNum != undefined" class="row">
@@ -43,9 +43,9 @@
 <ng-template #content let-modal>
   <div class="modal-header">
     <h4 class="modal-title" id="modal-basic-title">Ey ey ey, khoan cái đã, hình như bạn muốn xóa bài hát này thì phải??</h4>
-    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+    <!-- <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
-    </button>
+    </button> -->
   </div>
   <div class="modal-body">
     <form>
@@ -58,10 +58,10 @@
     </form>
   </div>
   <div class="modal-footer">
-    <button type="button" class="close btn-outline-dark" aria-label="Close" (click)="modal.dismiss('Cross click')">
-      <span aria-hidden="true">Thôi tôi nghĩ lại rồi, để lại cho tôi !</span>
+    <button type="button" class="close btn btn-dark " aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span class="text-dark" aria-hidden="true">Thôi tôi nghĩ lại rồi, để lại cho tôi !</span>
     </button>
-    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Xóa cmn đi ngay cho tôi !</button>
+    <button type="button" class="btn btn-outline-dark font-weight-bold" (click)="modal.close('Save click')">Đừng lằng nhằng!! Xóa cmn đi ngay dùm tôi !</button>
   </div>
  
 </ng-template>

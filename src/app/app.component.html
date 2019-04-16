@@ -40,7 +40,7 @@
                     <button (click)="prevSong()" class="btn"><fa name="fast-backward"></fa></button>
                     <button *ngSwitchCase="true" (click)="controlMusic()" class="btn"><fa name="{{status}}"></fa></button>
                     <button *ngSwitchCase="false" class="btn"><fa name="{{status}}"></fa></button>
-                    <button (click)="prevSong()" class="btn"><fa name="fast-forward"></fa></button>
+                    <button (click)="nextSong()" class="btn"><fa name="fast-forward"></fa></button>
                     <button class="btn"><fa name="undo"></fa></button>
                   </div>
                   <div class="col-12">
