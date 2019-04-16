@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './screens/home/home.component';
 import { ArtistsComponent} from './screens/artists/artists.component';
 import { SongComponent } from './screens/song/song.component';
+import { EditSongComponent } from './screens/edit-song/edit-song.component';
+import { AddSongComponent } from './screens/add-song/add-song.component';
 
 const routes: Routes = [
 {
@@ -13,9 +15,13 @@ const routes: Routes = [
 },
 {
   path: 'artists/:artistID/songs/:songID', component: SongComponent
+},
+{
+  path: 'artists/:artistID/songs/:songID/edit', component: EditSongComponent
+},
+{
+  path: 'add-song', component: AddSongComponent
 }
-
-
 ];
 
 @NgModule({

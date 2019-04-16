@@ -1,0 +1,59 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8 mx-auto ">
+      <h1 class="text-center">EDIT THIS</h1>
+      <form novalidate [formGroup]="createForm">
+          
+          <input type="hidden" [value]="createForm.controls.id.value" formControlName='id' >
+        <input type="hidden" [value]="createForm.controls.artistId.value" formControlName='artistId' >
+        <div class="form-group">
+          <label for="">Tên bài hát</label>
+          <input type="text" class="form-control"  [value]="createForm.controls.title.value" formControlName="title" >
+          <div *ngIf="createForm.controls.title.value == ''
+                      && (createForm.controls.title.dirty
+                      || createForm.controls.title.touched)">
+              <span class="text-danger" *ngIf="createForm.controls.title.errors.required">Name is required!</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Link Source</label>
+          <input type="text" class="form-control" [value]="createForm.controls.link_source.value" formControlName="link_source">
+          <div *ngIf="createForm.controls.link_source.value == '' 
+                      && (createForm.controls.link_source.dirty
+                      || createForm.controls.link_source.touched)">
+              <span class="text-danger" 
+                  *ngIf="createForm.controls.link_source.errors.required">Link source is required!</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Ảnh đại diện</label>
+          <input type="text" class="form-control" [value]="createForm.controls.image.value" formControlName="image" >
+          <div *ngIf="createForm.controls.image.value == ''
+                      && (createForm.controls.image.dirty
+                      || createForm.controls.image.touched)">
+              <span class="text-danger" 
+                  *ngIf="createForm.controls.image.errors.required">Image is required!</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Lyrics</label>
+          <textarea class="form-control" cols="30" rows="10" [value]="createForm.controls.lyrics.value" formControlName="lyrics"></textarea>
+          <div *ngIf="createForm.controls.lyrics.value == ''
+                      && (createForm.controls.lyrics.dirty
+                      || createForm.controls.lyrics.touched)">
+              <span class="text-danger" 
+                  *ngIf="createForm.controls.lyrics.errors.required">Lyrics is required!</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-4 mx-auto">
+              <button type="button" (click)="saveForm()" class="btn btn-lg bg-dark mr-2 text-light">UPDATE</button>
+              <button type="button" class="btn btn-lg bg-dark ml-2 text-light">HUỶ</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

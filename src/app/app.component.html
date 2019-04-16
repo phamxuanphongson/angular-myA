@@ -2,14 +2,14 @@
   <div class="row border-bottom header-custom">
     <div class="col-8 pt-2 pb-2 mx-auto ">
         <nav class="navbar navbar-expand-lg navbar-light">
-            <a class="navbar-brand pr-5" href="#">MUSIC FOR LIFE</a>
+            <a class="navbar-brand pr-5 font-weight-bold" href="#">MUSIC FOR LIFE</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
-              <div class="navbar-nav ">
+              <div class="navbar-nav">
                 <a class="nav-item nav-link text-dark mr-5" href="#">Artists <span class="sr-only">(current)</span></a>
-                <a class="nav-item nav-link text-dark mr-5" href="#">Download Music</a>
+                <a class="nav-item nav-link text-dark mr-5" href="add-song">Add a song</a>
                 <a class="nav-item nav-link text-dark mr-5" href="#">News</a>
                 <a class="nav-item nav-link text-dark mr-5" href="#">Contact</a>
               </div>
@@ -21,6 +21,9 @@
 
 <router-outlet></router-outlet>
 
+<div class="container loadingText">
+  <h4>LOADING SONG....</h4>
+</div>
 <div class="songs-box container-fluid">
   <div class="row">
       <div class="col-8 mx-auto">
@@ -28,30 +31,40 @@
           <div class="col-2">
 
           </div>
-          <div class="col-8 row ">
-            <div class=" col-8 mt-3 mb-2 control-btn btn-group btn-group-lg mx-auto">
-              <button class="btn"><fa name="random"></fa></button>
-              <button class="btn"><fa name="fast-backward"></fa></button>
-              <button class="btn"><fa name="play"></fa></button>
-              <button class="btn"><fa name="fast-forward"></fa></button>
-              <button class="btn"><fa name="undo"></fa></button>
-            </div>
-            <div class="col-12 row">
-                <div class="col-1">
-                  <p>00:00</p>
+          <div class="col-8">
+              <div class="row ">
+                  <div [ngSwitch]="isOn" class="col-8 mt-2 mb-3 control-btn btn-group btn-group-lg mx-auto ctrl-btns bg-white">
+                    <button class="btn"><fa name="volume-up"></fa></button>
+                    <button (click)="prevSong()" class="btn"><fa name="fast-backward"></fa></button>
+                    <button *ngSwitchCase="true" (click)="controlMusic()" class="btn"><fa name="{{status}}"></fa></button>
+                    <button *ngSwitchCase="false" class="btn"><fa name="{{status}}"></fa></button>
+                    <button (click)="prevSong()" class="btn"><fa name="fast-forward"></fa></button>
+                    <button class="btn"><fa name="undo"></fa></button>
+                  </div>
+                  <div class="col-12">
+                      <div class="row">
+                          <div class="col-1  text-center px-0">
+                            <p class="currentTimeTag font-weight-bold">0:0</p>
+                          </div>
+                          <div class="col-10 pt-2" >
+                              <audio *ngIf="theSong != undefined" [src]="theSong.link_source"></audio>
+                              <!-- <p><progress id="seekbar" value="0" max="1" style="width:100%;"></progress></p> -->
+                              
+                                <div class="progress">
+                                  <div  role="progressbar" id="seekbar" class="progress-bar bg-success" aria-valuemax="100" ></div>
+                                </div>
+                              
+                              <!-- <p><ngb-progressbar type="success" [value]="25"></ngb-progressbar></p> -->
+                          </div>
+                          <div class="col-1 px-0 text-center theDuration">
+                            <p class="font-weight-bold theDurationP">0:0</p>
+                          </div>
+                      </div>
+                  </div>
                 </div>
-                <div class="col-10 pt-1" >
-                    <audio *ngIf="theSong != undefined" [src]="theSong.link_source"></audio>
-                    <p><ngb-progressbar type="dark" [value]="1"></ngb-progressbar></p>
-                </div>
-                <div class="col-1">
-                  <p>04:30</p>
-                </div>
-            </div>
           </div>
-          
           <div class="col-2">
-
+            <audio id="audio" [src]="theLink" autoplay preload="metadata"></audio>
           </div>
         </div>
       </div>

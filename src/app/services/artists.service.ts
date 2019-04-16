@@ -11,7 +11,7 @@ export class ArtistsService {
   getAllArtists(){
     return this.httpClient.get<Artists[]>(`${this.apiUrl}`);
   }
-
+  
 
 
 }

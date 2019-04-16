@@ -1,29 +1,67 @@
 <div class="list-artists container-fluid">
   <div class="row">
-      <div class="col-8 mx-auto mt-5">
+      <div class="col-2 option-div mt-5 pt-3">
+        <a href="/artists/{{theArtistID}}/songs/{{theSongID}}/edit">
+          E D I T
+        </a>
+        <a (click)="open(content)" href="javascript:;">
+          D E L E T E
+        </a>
+      </div>
+      <div class="col-8 mr-auto mt-5 the-song">
           <div class="row">
-            <div class="col-5 text-center">
-              <a>
-                <!-- <i class="fas fa-music"></i> -->
-                <img [ngStyle]="{'background-image': 'url(' + theArtist.avatar + ')'}" class=" d-block mx-auto artist-thumb-detail rounded" alt="">
-              </a>
-              <h1 class="mt-3 mb-3">{{theArtist.name}}</h1>
-              <p>{{theArtist.bio}}</p>
+              <div class="col-6 text-center position-relative song-detail-div">
+                  <h1>{{theSongTitle}}</h1>
+                  <p class="mt-4 mb-0">{{theSongLyrics}}</p>
+              </div>
+            <div class="col-6">
+              <img [src]="theSongImg" class="img-fluid rounded" alt="">
             </div>
-            <div class="col-7">
-              <ul *ngIf="AllSongFromArtist != undefined" class="list-unstyled list-group list-group-flush">
-                <li *ngFor="let song of AllSongFromArtist" class="list-group-item">
-                  <h3>
-                    <fa name="music"></fa>
-                    <a routerLink="/artists/{{theArtist.id}}/songs/{{song.id}}" class="pl-3">
-                      {{song.title}}
-                    </a>
-                    <span class="float-right" style="font-size: 1.3rem ; font-weight: 200">00:00</span>
-                  </h3>
-                </li>
-              </ul>
-            </div>
+            
           </div>
       </div>
   </div>
 </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-10 mx-auto">
+      <div *ngIf="AllArtists != undefined && randomNum != undefined" class="row">
+        <div  *ngFor="let ran of randomNum" class="col-2 text-center">
+            <a  routerLink="/artists/{{AllArtists[ran].id}}/songs">
+                <img [ngStyle]="{'background': 'url('+ AllArtists[ran].avatar +') 50% 50% no-repeat'}" class="artist-thumb rounded" alt="">
+            </a>
+            <h5 class="mt-2">
+                <a  class="text-dark" routerLink="/artists/{{AllArtists[ran].id}}/songs">{{AllArtists[ran].name}}</a>
+            </h5>
+            
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Ey ey ey, khoan cái đã, hình như bạn muốn xóa bài hát này thì phải??</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+      <div class="form-group">
+        <h6>Nào , giờ bạn hãy bình tĩnh và đọc thật kỹ những câu hỏi này nhé:</h6>
+        <p>Bạn chắc chắn muốn xóa nó chứ?</p>
+        <p>Bạn sẽ không hối hận với quyết định này ?</p>
+        <p>Nếu bạn xóa đi rồi bạn sẽ phải add lại nó nếu muốn nghe, bạn đồng ý không ?</p>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="close btn-outline-dark" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">Thôi tôi nghĩ lại rồi, để lại cho tôi !</span>
+    </button>
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Xóa cmn đi ngay cho tôi !</button>
+  </div>
+ 
+</ng-template>

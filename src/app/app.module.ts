@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
@@ -12,20 +12,27 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './screens/home/home.component';
 import { ArtistsComponent } from './screens/artists/artists.component';
 import { SongComponent } from './screens/song/song.component';
+import { EditSongComponent } from './screens/edit-song/edit-song.component';
+import { AddSongComponent } from './screens/add-song/add-song.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     ArtistsComponent,
-    SongComponent
+    SongComponent,
+    EditSongComponent,
+    AddSongComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     AngularFontAwesomeModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,14 +1,59 @@
 .header-custom{
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
 }
+header.container-fluid{
+    padding: 0;
+}
+header.container-fluid .row{
+    margin: 0;
+}
 .songs-box{
     height: 120px;
-    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
     position: fixed;
-    bottom: 0%;
-    background: white
+    bottom: -25%;
+    padding: 0;
+    transition: 1.5s all;
+}
+.loadingText{
+    position: fixed;
+    bottom: 0;
 }
 .control-btn>button:hover{
-    background-color: gray;
+    background-color: black;
     color: white;
+}
+.progress-bar{
+    transition: all 1000ms cubic-bezier(0,0,.58,1);
+    background-color: black !important;
+}
+.progress{
+    border: 3px solid white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+}
+.ctrl-btns{
+    border: 1px solid grey;
+    border-radius: 10px;
+    padding: 0;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+}
+#navbarNavAltMarkup>div>a:hover{
+    font-weight: 500;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.75);
+    border-radius: 5px;
+    transition: 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.player-on{
+    bottom: 0%;
+}
+.currentTimeTag,.theDurationP{
+    border: 1px solid gray;
+    background: white;
+    width: 60px;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    box-shadow: 0px 0px 5px 1px rgba(0,0,0,0.75);
+    border-radius: 5px;
+    margin: 0 auto;
 }
