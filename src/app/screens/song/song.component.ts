@@ -16,14 +16,19 @@ declare var getTheAudio: any;
   styleUrls: ['./song.component.css']
 })
 export class SongComponent implements OnInit{
+  theSong: any;
   allSongFromArtist: Songs[];
   closeResult: string;
   AllArtists: Artists[];
   randomNum: any[] = [];
   artistID: string = '0';
   songID: string = '0';
+  colChanges:string = 'col-2';
+  colChanges2:string = 'col-8';
+  
   // get song
   theSongID: number;
+  theSongArtistID:number;
   theSongTitle: string;
   theSongImg: string;
   theSongLyrics: string;
@@ -61,14 +66,26 @@ export class SongComponent implements OnInit{
 
 
   ngOnInit() {
-    
+
     this.songsService.getTheSong(this.songID, this.artistID).subscribe(info => {
-      this.theSongID = info.id;
-      this.theSongTitle = info.title;
-      this.theSongImg = info.image;
-      this.theSongLyrics = info.lyrics;
-      this.theSongLink = info.link_source;
-      this.share.changeLink(info.link_source);
+      this.share.changeTheSong(info);
+
+      this.share.currentTheSong.subscribe(data=>{
+      this.theSongID = data.id;
+      this.theSongArtistID = data.artistId;
+      this.theSongTitle = data.title;
+      this.theSongImg = data.image;
+      this.theSongLyrics = data.lyrics;
+      this.theSongLink = data.link_source;
+        
+      })
+      // this.theSongID = info.id;
+      // this.theSongTitle = info.title;
+      // this.theSongImg = info.image;
+      // this.theSongLyrics = info.lyrics;
+      // this.theSongLink = info.link_source;
+      // this.share.changeLink(info.link_source);
+      // this.share.changeTheSongId(info.id);
     });
 
     this.songsService.getTheArtist(this.artistID).subscribe(info=>{
@@ -84,13 +101,25 @@ export class SongComponent implements OnInit{
     });
 
     this.randomNum = this.songsService.randomArrMinMax(6,0,20);
-    if(this.randomNum.length>6){
-      this.randomNum.splice(6,6);
+    if(this.randomNum.length>4){
+      this.randomNum.splice(4,4);
     }
     // this.share.turnOnPlayer(this.turnOnStr);
     getTheAudio();
     
 
+  }
+
+  mouseEnter(str: string, str2: string, str3: string, str4:string){
+    this.colChanges = str;
+    this.colChanges2 = str2;
+    
+  }
+
+  mouseLeave(str: string, str2: string,str3:string){
+    this.colChanges = str;
+    this.colChanges2 = str2;
+    
   }
 
   

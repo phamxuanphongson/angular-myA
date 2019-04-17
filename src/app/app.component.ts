@@ -20,6 +20,16 @@ export class AppComponent implements OnInit{
   status:string ='pause';
   isOn: Boolean = true;
   audioTag:any;
+  theSongIDApp: number;
+
+  // get song
+  theSongID: number;
+  theSongArtistID:number;
+  theSongTitle: string;
+  theSongImg: string;
+  theSongLyrics: string;
+  theSongLink: string;
+  duration:string;
   
   constructor(private share: ShareService,private artistsService: ArtistsService, private route: ActivatedRoute,private songsService: SongsService){
     this.artistID = this.route.snapshot.paramMap.get('artistID');
@@ -27,9 +37,9 @@ export class AppComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.share.currentLink.subscribe(link => {
-      this.theLink = link;
-    })
+    // this.share.currentLink.subscribe(link => {
+    //   this.theLink = link;
+    // })
 
     this.share.currentDuration.subscribe(info=>{
       this.theDuration = info;
@@ -37,9 +47,18 @@ export class AppComponent implements OnInit{
 
     this.share.currentAllSongFromArtis.subscribe(data=>{
       this.allSongFromArtistApp = data;
-      console.log(this.allSongFromArtistApp);
     })
-  
+    this.share.currentTheSongID.subscribe(data=>{
+      this.theSongIDApp = data;
+    })
+    this.share.currentTheSong.subscribe(data=>{
+      this.theSongID = data.id;
+      this.theSongArtistID = data.artistId;
+      this.theSongTitle = data.title;
+      this.theSongImg = data.image;
+      this.theSongLyrics = data.lyrics;
+      this.theSongLink = data.link_source;
+    })
   }
 
   
@@ -53,11 +72,43 @@ export class AppComponent implements OnInit{
     controlM();
   }
 
-  prevSong(songID: number){
-    // console.log(this.artistID);
-    // this.songsService.getAllSongFromArtist(this.artistID).subscribe((listSongs) => {
-    //   this.allSongFromArtist = listSongs;
-    //   console.log(this.allSongFromArtist);
-    // });
+  prevSong(songID){
+    this.allSongFromArtistApp.forEach((el, index)=>{
+      if(el.id == songID){
+        if (index == 0) {
+          index = this.allSongFromArtistApp.length - 1;
+          // this.theSongIDApp = this.allSongFromArtistApp[index].id;
+          this.share.changeTheSong(this.allSongFromArtistApp[index]);
+          // console.log(this.allSongFromArtistApp[index]);
+        }
+        else{
+          index = index - 1;
+          // this.theSongIDApp = this.allSongFromArtistApp[index].id;
+          this.share.changeTheSong(this.allSongFromArtistApp[index]);
+          // console.log(this.allSongFromArtistApp[index]);
+        }
+        // this.theLink = this.allSongFromArtistApp[index].link_source;
+      }
+    })
+  }
+
+  nextSong(songID){
+    this.allSongFromArtistApp.forEach((el, index)=>{
+      if(el.id == songID){
+        if (index == this.allSongFromArtistApp.length - 1) {
+          index = 0;
+          // this.theSongIDApp = this.allSongFromArtistApp[index].id;
+          this.share.changeTheSong(this.allSongFromArtistApp[index]);
+          // console.log(this.allSongFromArtistApp[index]);
+        }
+        else{
+          index = index + 1;
+          // this.theSongIDApp = this.allSongFromArtistApp[index].id;
+          this.share.changeTheSong(this.allSongFromArtistApp[index]);
+          // console.log(this.allSongFromArtistApp[index]);
+        }
+        // this.theLink = this.allSongFromArtistApp[index].link_source;
+      }
+    })
   }
 }

@@ -1,6 +1,6 @@
 <div class="list-artists container-fluid">
   <div class="row">
-      <div class="col-2 option-div mt-5 pt-3">
+      <div class="{{colChanges}} option-div mt-5 pt-3">
         <a href="/artists/{{theArtistID}}/songs/{{theSongID}}/edit">
           E D I T
         </a>
@@ -8,25 +8,25 @@
           D E L E T E
         </a>
       </div>
-      <div class="col-8 mr-auto mt-5 the-song">
+      <div class="{{colChanges2}} mt-5 the-song">
           <div class="row">
               <div class="col-6 text-center position-relative song-detail-div">
                   <h1>{{theSongTitle}}</h1>
-                  <p class="mt-4 mb-0">{{theSongLyrics}}</p>
+                  <p class="mt-4 mb-0 p-3">{{theSongLyrics}}</p>
               </div>
             <div class="col-6">
-              <img [src]="theSongImg" class="img-fluid rounded" alt="">
+              <img [src]="theSongImg" (mouseenter) ="mouseEnter('col-1','col-10')" (mouseleave) ="mouseLeave('col-2','col-8')" class="img-fluid rounded big-img" alt="">
             </div>
             
           </div>
       </div>
   </div>
 </div>
-<div class="container-fluid" style="margin-bottom: 120px;">
+<div class="container-fluid" style="margin-bottom: 150px; margin-top: 30px">
   <div class="row">
     <div class="col-10 mx-auto">
       <div *ngIf="AllArtists != undefined && randomNum != undefined" class="row">
-        <div  *ngFor="let ran of randomNum" class="col-2 text-center">
+        <div  *ngFor="let ran of randomNum" class="col-3 text-center">
             <a  routerLink="/artists/{{AllArtists[ran].id}}/songs">
                 <img [ngStyle]="{'background': 'url('+ AllArtists[ran].avatar +') 50% 50% no-repeat'}" class="artist-thumb rounded" alt="">
             </a>
