@@ -14,6 +14,7 @@ import { ArtistsComponent } from './screens/artists/artists.component';
 import { SongComponent } from './screens/song/song.component';
 import { EditSongComponent } from './screens/edit-song/edit-song.component';
 import { AddSongComponent } from './screens/add-song/add-song.component';
+import { AddArtistComponent } from './screens/add-artist/add-artist.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AddSongComponent } from './screens/add-song/add-song.component';
     SongComponent,
     EditSongComponent,
     AddSongComponent,
+    AddArtistComponent,
 
   ],
   imports: [

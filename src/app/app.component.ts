@@ -64,6 +64,7 @@ export class AppComponent implements OnInit{
   
 
   controlMusic(){
+    
     if (this.status == 'play') {
       this.status = 'pause';
     }else{

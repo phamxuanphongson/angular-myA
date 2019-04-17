@@ -5,7 +5,7 @@ import { ArtistsComponent} from './screens/artists/artists.component';
 import { SongComponent } from './screens/song/song.component';
 import { EditSongComponent } from './screens/edit-song/edit-song.component';
 import { AddSongComponent } from './screens/add-song/add-song.component';
-
+import { AddArtistComponent } from './screens/add-artist/add-artist.component';
 const routes: Routes = [
 {
   path: '', component: HomeComponent
@@ -21,11 +21,15 @@ const routes: Routes = [
 },
 {
   path: 'add-song', component: AddSongComponent
+},
+{
+  path: 'add-artist', component: AddArtistComponent
 }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  
+exports: [RouterModule]
 })
 export class AppRoutingModule { }
