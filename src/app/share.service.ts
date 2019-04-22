@@ -5,20 +5,23 @@ import {BehaviorSubject} from 'rxjs';
   providedIn: 'root'
 })
 export class ShareService {
+
   private linkS = new BehaviorSubject<string>('');
   private durationTime = new BehaviorSubject<string>('');
   private allSongFromArtist = new BehaviorSubject<any>([]);
   private theSongID = new BehaviorSubject<number>(null);
   private theSong = new BehaviorSubject<any>({});
+
   currentLink = this.linkS.asObservable();
   currentDuration = this.durationTime.asObservable();
   currentAllSongFromArtis = this.allSongFromArtist.asObservable();
   currentTheSongID = this.theSongID.asObservable();
   currentTheSong = this.theSong.asObservable();
+
   constructor() { }
 
-  changeLink(link: string){
-    this.linkS.next(link);
+  changeLink(link123: string){
+    this.linkS.next(link123);
   }
 
   changeDuration(duration: string){

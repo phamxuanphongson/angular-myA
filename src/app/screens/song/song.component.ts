@@ -69,7 +69,6 @@ export class SongComponent implements OnInit{
 
     this.songsService.getTheSong(this.songID, this.artistID).subscribe(info => {
       this.share.changeTheSong(info);
-
       this.share.currentTheSong.subscribe(data=>{
       this.theSongID = data.id;
       this.theSongArtistID = data.artistId;
@@ -94,19 +93,17 @@ export class SongComponent implements OnInit{
     
     this.artistsService.getAllArtists().subscribe(info=>{
       this.AllArtists = info;
+      this.randomNum = this.songsService.randomArrMinMax(6,0,this.AllArtists.length);
+      if(this.randomNum.length>4){
+        this.randomNum.splice(4,6);
+      }
     });
 
     this.songsService.getAllSongFromArtist(this.artistID).subscribe((listSongs) => {
       this.share.changeAllSongFromArtist(listSongs);
     });
 
-    this.randomNum = this.songsService.randomArrMinMax(6,0,20);
-    if(this.randomNum.length>4){
-      this.randomNum.splice(4,4);
-    }
-    // this.share.turnOnPlayer(this.turnOnStr);
     getTheAudio();
-    
 
   }
 

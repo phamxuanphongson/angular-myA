@@ -12,6 +12,9 @@ export class ArtistsService {
     return this.httpClient.get<Artists[]>(`${this.apiUrl}`);
   }
   
+  addAnArtist(newObj){
+    return this.httpClient.post<Artists>(`${this.apiUrl}`,newObj);
+  }
 
 
 }

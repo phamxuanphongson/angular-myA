@@ -1,3 +1,47 @@
-<p>
-  add-artist works!
-</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-8 mx-auto ">
+      <h1 class="text-center mt-3">ADD AN ARTIST</h1>
+      <form novalidate [formGroup]="createForm">
+        <div class="form-group">
+          <label for="">Tên tác giả</label>
+          <input type="text" class="form-control"  formControlName="name" >
+          <div *ngIf="createForm.controls.name.errors 
+                      && (createForm.controls.name.dirty
+                      || createForm.controls.name.touched)">
+              <span class="text-danger" *ngIf="createForm.controls.name.errors.required">Name is required!</span>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="">Ảnh đại diện</label>
+          <input type="text" class="form-control" formControlName="avatar" >
+          <div *ngIf="createForm.controls.avatar.errors 
+                      && (createForm.controls.avatar.dirty
+                      || createForm.controls.avatar.touched)">
+              <span class="text-danger" 
+                  *ngIf="createForm.controls.avatar.errors.required">Image is required!</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="">Bio</label>
+          <textarea class="form-control" cols="30" rows="10" formControlName="bio"></textarea>
+          <div *ngIf="createForm.controls.bio.errors 
+                      && (createForm.controls.bio.dirty
+                      || createForm.controls.bio.touched)">
+              <span class="text-danger" 
+                  *ngIf="createForm.controls.bio.errors.required">Bio is required!</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-4 mx-auto">
+              <button type="button" (click)="saveForm()" class="btn btn-lg bg-dark mr-2 text-light">THÊM</button>
+              <button type="button" class="btn btn-lg bg-dark ml-2 text-light">HUỶ</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -15,6 +15,7 @@ import { SongComponent } from './screens/song/song.component';
 import { EditSongComponent } from './screens/edit-song/edit-song.component';
 import { AddSongComponent } from './screens/add-song/add-song.component';
 import { AddArtistComponent } from './screens/add-artist/add-artist.component';
+import { EditArtistComponent } from './screens/edit-artist/edit-artist.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { AddArtistComponent } from './screens/add-artist/add-artist.component';
     EditSongComponent,
     AddSongComponent,
     AddArtistComponent,
+    EditArtistComponent,
 
   ],
   imports: [
